@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIBERASI.NET - Internet Cepat Harga Merakyat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            padding: 15px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #764ba2;
+        }
+
+        .nav-brand i {
+            margin-right: 10px;
+            font-size: 30px;
+        }
+
+        .nav-contact {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-contact i {
+            margin-right: 5px;
+            color: #764ba2;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .paper-plane {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            animation: fly 15s infinite ease-in-out;
+        }
+
+        .paper-plane i {
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.7);
+            transform: rotate(45deg);
+        }
+
+        @keyframes fly {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-30px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 80px 0;
+            background: white;
+            position: relative;
+        }
+
+        .packages::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: white;
+            transform: skewY(-3deg);
+        }
+
+        .packages h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .package-card.featured {
+            border: 2px solid #764ba2;
+            transform: scale(1.05);
+        }
+
+        .package-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .package-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .package-header h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .speed {
+            font-size: 36px;
+            font-weight: 700;
+            color: #764ba2;
+            margin: 10px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .price {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .price span {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li i {
+            color: #4caf50;
+            margin-right: 10px;
+        }
+
+        .btn-pilih {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-pilih:hover {
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item i {
+            font-size: 48px;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-item p {
+            color: #666;
+        }
+
+        /* Coverage Section */
+        .coverage {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .coverage h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .coverage-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .coverage-text h3 {
+            font-size: 28px;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        .coverage-text p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .coverage-text ul {
+            list-style: none;
+        }
+
+        .coverage-text li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .coverage-text li i {
+            color: #764ba2;
+            margin-right: 10px;
+        }
+
+        .coverage-map {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .coverage-map i {
+            font-size: 100px;
+            color: #764ba2;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #764ba2;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #764ba2;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .package-card.featured {
+                transform: scale(1);
+            }
+
+            .coverage-info {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-contact {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <i class="fas fa-wifi"></i>
+                    <span>FIBERASI.NET</span>
+                </div>
+                <div class="nav-contact">
+                    <i class="fas fa-phone"></i> 0812-3456-7890
+                    <i class="fas fa-envelope"></i> info@fiberasi.net
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>INTERNET CEPAT HARGA MERAKYAT</h1>
+                <p>Your Home Connection Support by PT Remala Abadi</p>
+                <div class="paper-plane">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <h2>Pilih Paket Internet Terbaik</h2>
+            <div class="package-grid">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Basic</h3>
+                        <div class="speed">10 Mbps</div>
+                    </div>
+                    <div class="price">
+                        <span>Rp</span>150.000<span>/bulan</span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Tanpa FUP</li>
+                        <li><i class="fas fa-check"></i> Gratis Instalasi</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                    </ul>
+                    <button class="btn-pilih">Pilih Paket</button>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card featured">
+                    <div class="package-header">
+                        <h3>Standard</h3>
+                        <div class="speed">15 Mbps</div>
+                        <span class="badge">Terlaris</span>
+                    </div>
+                    <div class="price">
+                        <span>Rp</span>185.000<span>/bulan</span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Tanpa FUP</li>
+                        <li><i class="fas fa-check"></i> Gratis Instalasi</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> Bonus 1 Bulan</li>
+                    </ul>
+                    <button class="btn-pilih">Pilih Paket</button>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Premium</h3>
+                        <div class="speed">20 Mbps</div>
+                    </div>
+                    <div class="price">
+                        <span>Rp</span>210.000<span>/bulan</span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Tanpa FUP</li>
+                        <li><i class="fas fa-check"></i> Gratis Instalasi</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> Bonus 1 Bulan</li>
+                        <li><i class="fas fa-check"></i> Prioritas Support</li>
+                    </ul>
+                    <button class="btn-pilih">Pilih Paket</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Kenapa Pilih FIBERASI.NET?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Internet Super Cepat</h3>
+                    <p>Nikmati kecepatan internet hingga 20 Mbps tanpa hambatan</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-infinity"></i>
+                    <h3>Tanpa Batasan Kuota</h3>
+                    <p>Internet unlimited tanpa FUP atau batasan pemakaian</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support 24/7</h3>
+                    <p>Tim support siap membantu kapan saja Anda butuhkan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section class="coverage">
+        <div class="container">
+            <h2>Area Layanan Kami</h2>
+            <div class="coverage-info">
+                <div class="coverage-text">
+                    <h3>Jakarta Barat & Tangerang</h3>
+                    <p>Kami melayani seluruh wilayah Jakarta Barat dan Tangerang dengan jaringan fiber optic terbaik.</p>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jakarta Barat: Kebon Jeruk, Kembangan, Cengkareng</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Tangerang: Karawaci, Ciledug, Serpong</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Dan wilayah sekitarnya</li>
+                    </ul>
+                </div>
+                <div class="coverage-map">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang FIBERASI.NET</h3>
+                    <p>Penyedia layanan internet fiber optic terpercaya dengan harga terjangkau untuk rumah dan usaha Anda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li>Internet Rumah</li>
+                        <li>Internet Kantor</li>
+                        <li>Internet WiFi</li>
+                        <li>Solusi Bisnis</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <p><i class="fas fa-phone"></i> 0812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@fiberasi.net</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jakarta Barat</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FIBERASI.NET. All rights reserved. Support by PT Remala Abadi</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Package selection
+        document.querySelectorAll('.btn-pilih').forEach(button => {
+            button.addEventListener('click', function() {
+                const packageCard = this.closest('.package-card');
+                const packageName = packageCard.querySelector('h3').textContent;
+                const packagePrice = packageCard.querySelector('.price').textContent;
+                
+                // Create modal
+                const modal = document.createElement('div');
+                modal.style.cs
